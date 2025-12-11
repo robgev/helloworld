@@ -5,9 +5,101 @@
 		<meta charset="utf-8">
 		<link rel="icon" type="image/png" href="http://icons.iconarchive.com/icons/iconarchive/red-orb-alphabet/256/Letter-R-icon.png">
 		<script>
-			const a = 'first variable';
-			const b = 'second variable';
-			console.log(a * b - a);
+			(function () {
+				const featureFlags = window.featureFlags || { heroWave: true };
+				window.featureFlags = featureFlags;
+				const sessionKey = 'heroWaveRendered';
+
+				function logWaveError(error) {
+					console.error('hero wave runtime error', error);
+				}
+
+				function reportAnalyticsOnce() {
+					try {
+						if (sessionStorage.getItem(sessionKey)) {
+							return;
+						}
+						if (window.analytics?.track) {
+							window.analytics.track('hero_wave_rendered');
+						} else if (window.dataLayer) {
+							window.dataLayer.push({ event: 'hero_wave_rendered' });
+						} else {
+							console.log('hero_wave_rendered');
+						}
+						sessionStorage.setItem(sessionKey, 'true');
+					} catch (error) {
+						logWaveError(error);
+					}
+				}
+
+				function initWave() {
+					try {
+						const hero = document.getElementById('header');
+						if (!hero) {
+							return;
+						}
+
+						const reduceMotionMedia = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+						const smallScreenMedia = window.matchMedia ? window.matchMedia('(max-width: 360px)') : null;
+						const raf = window.requestAnimationFrame ? window.requestAnimationFrame.bind(window) : (cb) => window.setTimeout(cb, 16);
+
+						function computeState() {
+							if (!featureFlags.heroWave) {
+								return 'off';
+							}
+							if (reduceMotionMedia?.matches || smallScreenMedia?.matches) {
+								return 'static';
+							}
+							return 'true';
+						}
+
+						function applyState(state) {
+							if (!state || hero.getAttribute('data-hero-wave-enabled') === state) {
+								return;
+							}
+							hero.setAttribute('data-hero-wave-enabled', state);
+							if (state !== 'off') {
+								reportAnalyticsOnce();
+							}
+						}
+
+						function refreshState() {
+							applyState(computeState());
+						}
+
+						refreshState();
+
+						const resizeHandler = () => {
+							if (!featureFlags.heroWave) {
+								return;
+							}
+							raf(refreshState);
+						};
+
+						if (reduceMotionMedia?.addEventListener) {
+							reduceMotionMedia.addEventListener('change', refreshState);
+						} else if (reduceMotionMedia?.addListener) {
+							reduceMotionMedia.addListener(refreshState);
+						}
+
+						if (smallScreenMedia?.addEventListener) {
+							smallScreenMedia.addEventListener('change', refreshState);
+						} else if (smallScreenMedia?.addListener) {
+							smallScreenMedia.addListener(refreshState);
+						}
+
+						window.addEventListener('resize', resizeHandler, { passive: true });
+					} catch (error) {
+						logWaveError(error);
+					}
+				}
+
+				if (document.readyState === 'loading') {
+					document.addEventListener('DOMContentLoaded', initWave);
+				} else {
+					initWave();
+				}
+			})();
 		</script>
 		<style>
 			html,body
@@ -24,6 +116,46 @@
 			background-size: 100%;
 			font-family: Verdana, sans-serif;
 			}
+
+:root
+{
+	--brand-primary: #F34B4B;
+	--hero-gradient: linear-gradient(135deg, rgba(9, 9, 11, 0.95), rgba(25, 14, 14, 0.92));
+	--wave-front-color: rgba(243, 75, 75, 0.4);
+	--wave-back-color: rgba(243, 75, 75, 0.25);
+	--hero-min-height: clamp(240px, 35vh, 420px);
+	--wave-front-duration: 19s;
+	--wave-back-duration: 27s;
+	--wave-anim-distance: 48px;
+}
+
+@media (prefers-color-scheme: dark)
+{
+	:root
+	{
+		--hero-gradient: linear-gradient(145deg, rgba(3, 3, 3, 0.95), rgba(18, 18, 18, 0.9));
+		--wave-front-color: rgba(243, 75, 75, 0.28);
+		--wave-back-color: rgba(130, 25, 25, 0.45);
+	}
+}
+
+@media (max-width: 768px)
+{
+	:root
+	{
+		--wave-anim-distance: 32px;
+	}
+}
+
+@media (max-width: 480px)
+{
+	:root
+	{
+		--wave-anim-distance: 20px;
+		--wave-front-duration: 23s;
+		--wave-back-duration: 32s;
+	}
+}
 
 			p
 			{
@@ -43,24 +175,167 @@
 			#header
 			{
 			width: 100%;
-			height: 22%;
-			border: 1px solid red;
+			min-height: var(--hero-min-height);
+			border: 1px solid rgba(243, 75, 75, 0.45);
 			border-bottom: 0px;
-			padding: 5px;
+			padding: clamp(16px, 4vw, 32px);
 			box-sizing: border-box;
-			background-image: url(http://hdblackwallpaper.com/wallpaper/2015/08/black-and-red-hd-wallpaper-1-cool-hd-wallpaper.jpg);
-			background-size: 100%;
+			background-image: var(--hero-gradient);
+			background-color: #050505;
+			background-size: cover;
 			background-position: center;
+			position: relative;
+			overflow: hidden;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			}
+
+			.hero-content
+			{
+			position: relative;
+			z-index: 1;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 16px;
+			width: 100%;
+			flex-wrap: wrap;
+			}
+
+			.hero-content > *:not(.hero-wave)
+			{
+			flex: 1 1 auto;
+			min-width: 160px;
+			}
+
+			.hero-wave
+			{
+			pointer-events: none;
+			position: absolute;
+			inset: auto 0 0 0;
+			height: 65%;
+			width: 100%;
+			opacity: 0.9;
+			transition: opacity 200ms ease;
+			}
+
+			.hero-wave svg
+			{
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			width: 100%;
+			height: auto;
+			display: block;
+			color: var(--wave-back-color);
+			transform-origin: center;
+			animation: none;
+			}
+
+			.hero-wave .wave-front
+			{
+			color: var(--wave-front-color);
+			opacity: 0.85;
+			}
+
+			.hero-wave .wave-back
+			{
+			opacity: 0.6;
+			filter: blur(0.5px);
+			}
+
+			#header[data-hero-wave-enabled="off"] .hero-wave
+			{
+			display: none;
+			}
+
+			#header[data-hero-wave-enabled="static"] .hero-wave svg
+			{
+			animation: none;
+			transform: none;
+			}
+
+			#header[data-hero-wave-enabled="true"] .hero-wave .wave-back
+			{
+			animation: waveDriftBack var(--wave-back-duration) ease-in-out infinite;
+			}
+
+			#header[data-hero-wave-enabled="true"] .hero-wave .wave-front
+			{
+			animation: waveDriftFront var(--wave-front-duration) ease-in-out infinite;
+			}
+
+			@keyframes waveDriftBack
+			{
+			0% { transform: translate3d(0, 0, 0); }
+			50% { transform: translate3d(calc(-1 * var(--wave-anim-distance)), 10px, 0); }
+			100% { transform: translate3d(0, 0, 0); }
+			}
+
+			@keyframes waveDriftFront
+			{
+			0% { transform: translate3d(0, 0, 0); }
+			50% { transform: translate3d(var(--wave-anim-distance), -6px, 0); }
+			100% { transform: translate3d(0, 0, 0); }
+			}
+
+			.hero-content h1
+			{
+			margin: 0;
+			}
+
+			@media (prefers-reduced-motion: reduce)
+			{
+			#header[data-hero-wave-enabled="true"] .hero-wave svg
+			{
+			animation: none;
+			transform: none;
+			}
+			}
+
+			@media (max-width: 768px)
+			{
+			.hero-content
+			{
+			justify-content: center;
+			}
+			}
+
+			@media (max-width: 600px)
+			{
+			.hero-content
+			{
+			flex-direction: column;
+			text-align: center;
+			}
+
+			#phones
+			{
+			text-align: center;
+			padding: 10px;
+			}
+			}
+
+			@media (max-width: 360px)
+			{
+			#header .hero-wave
+			{
+			opacity: 0.4;
+			}
 			}
 
 			h1, #logo
 			{
-			float: left;
+			float: none;
 			}
 
 			#logo
 			{
 			height: 150px;
+			max-width: 180px;
+			object-fit: contain;
+			flex: 0 0 auto;
 			}
 
 			h1
@@ -70,8 +345,9 @@
 
 			.HeaderText
 			{
-			width: 40%;
-			margin: 10px auto;
+			width: auto;
+			margin: 10px 0;
+			max-width: 420px;
 			}
 
 			.phoneArea
@@ -82,9 +358,11 @@
 
 			#phones
 			{
-			float: right;
-			height: 50%;
+			float: none;
+			height: auto;
 			padding: 30px 15px;
+			text-align: right;
+			flex: 0 0 auto;
 			}
 			/* ------------------------------------------------------------------------------------------------------*/
 
@@ -504,16 +782,26 @@
 	</head>
 	<body>
 		<div id="main">
-			<div id="header">
-				<img src="http://www.lovethisgif.com/uploaded_images/12067-In-Other-Words-Rest-Assured.-We-Keep-It-Ninja..gif" id="logo">
-				<div class="HeaderText">
-					<h1>CS110 Homework1</h1>
+			<div id="header" data-hero-wave-enabled="static">
+				<div class="hero-content">
+					<img src="http://www.lovethisgif.com/uploaded_images/12067-In-Other-Words-Rest-Assured.-We-Keep-It-Ninja..gif" id="logo" alt="Site logo">
+					<div class="HeaderText">
+						<h1>CS110 Homework1</h1>
+					</div>
+					<div id="phones">
+						<span class = "phoneArea">
+							+374 93 14 11 04<br>
+							+374 98 23 42 74
+						</span>
+					</div>
 				</div>
-				<div id="phones">
-					<span class = "phoneArea">
-						+374 93 14 11 04<br>
-						+374 98 23 42 74
-					</span>
+				<div class="hero-wave" aria-hidden="true">
+					<svg class="wave wave-back" viewBox="0 0 1440 320" preserveAspectRatio="none" focusable="false">
+						<path d="M0,192L60,176C120,160,240,128,360,112C480,96,600,96,720,117.3C840,139,960,181,1080,186.7C1200,192,1320,160,1380,144L1440,128L1440,320L0,320Z" fill="currentColor"></path>
+					</svg>
+					<svg class="wave wave-front" viewBox="0 0 1440 320" preserveAspectRatio="none" focusable="false">
+						<path d="M0,256L80,234.7C160,213,320,171,480,154.7C640,139,800,149,960,170.7C1120,192,1280,224,1360,240L1440,256L1440,320L0,320Z" fill="currentColor"></path>
+					</svg>
 				</div>
 			</div>
 			<div class="menu">
