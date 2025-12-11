@@ -1,652 +1,476 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<title>CS110 Homework1</title>
-		<meta charset="utf-8">
-		<link rel="icon" type="image/png" href="http://icons.iconarchive.com/icons/iconarchive/red-orb-alphabet/256/Letter-R-icon.png">
-		<script>
-			const a = 'first variable';
-			const b = 'second variable';
-			console.log(a * b - a);
-		</script>
-		<style>
-			html,body
-			{
-			width: 100%;
-			height: 100%;
-			}
-
-			body
-			{
-			margin: 0;
-			padding: 0;
-			background: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/footer_lodyas.png);
-			background-size: 100%;
-			font-family: Verdana, sans-serif;
-			}
-
-			p
-			{
-			color: white;
-			}
-
-			#main
-			{
-			width: 80%;
-			height: 100%;
-			margin: 0px auto;
-			box-sizing: border-box;
-			}
-
-			/*-----------------------------------HEADER PART----------------------------------------------*/
-
-			#header
-			{
-			width: 100%;
-			height: 22%;
-			border: 1px solid red;
-			border-bottom: 0px;
-			padding: 5px;
-			box-sizing: border-box;
-			background-image: url(http://hdblackwallpaper.com/wallpaper/2015/08/black-and-red-hd-wallpaper-1-cool-hd-wallpaper.jpg);
-			background-size: 100%;
-			background-position: center;
-			}
-
-			h1, #logo
-			{
-			float: left;
-			}
-
-			#logo
-			{
-			height: 150px;
-			}
-
-			h1
-			{
-			color: #F34B4B;
-			}
-
-			.HeaderText
-			{
-			width: 40%;
-			margin: 10px auto;
-			}
-
-			.phoneArea
-			{
-			font-size: 15pt;
-			color: #F34B4B;
-			}
-
-			#phones
-			{
-			float: right;
-			height: 50%;
-			padding: 30px 15px;
-			}
-			/* ------------------------------------------------------------------------------------------------------*/
-
-			/* ------------------------------------CONTENT PART------------------------------------------------------*/
-
-			#content
-			{
-			width: 100%;
-			height: auto;
-			padding: 15px;
-			box-sizing: border-box;
-				background-color: rgba(0,0,0,0.5);
-			background-size: 100%;
-			border: 1px solid red;
-			border-collapse: collapse;
-			}
-
-			.right
-			{
-			float: right;
-			}
-
-			.left
-			{
-			float: left;
-			}
-
-			.level
-			{
-			margin-top: 0;
-			}
-
-			.inline
-			{
-			display: inline-block;
-			}
-
-			.postImage, .maininfo
-			{
-			width: 100%;
-			}
-
-			.blank
-			{
-			width: 55%;
-			}
-
-			.profilepic, .profiletext, .contact
-			{
-			width: 40%;
-			}
-
-			.contact
-			{
-			margin-left: 20px;
-			}
-
-			.edublock, .social
-			{
-			height: 20%;
-			}
-
-			#edulist
-			{
-			list-style-image: url('marker.png');
-			}
-
-			.small
-			{
-			width: 25%;
-			padding: 5px;
-			}
-
-			.divided
-			{
-			border: 1px solid red;
-			margin: 20px;
-			}
-
-			.mainText, .mainText p
-			{
-			line-height: 25px;
-			font-size: 20px;
-			}
-
-			.pageHeader
-			{
-			margin: 35px;
-			font-size: 30px;
-			text-align: center;
-			}
-
-			h2.about
-			{
-			border-bottom: 1px solid red;
-			padding-bottom: 15px;
-			font-size: 40px;
-			}
-
-			.caption, .pageHeader
-			{
-			color: #C83F3F;
-			text-align: center;
-			}
-
-			.headerBlock
-			{
-			height: auto;
-			width: 100%;
-			border-bottom: 1px solid red;
-			margin-bottom: 35px;
-			}
-
-			.label
-			{
-			color: #C83F3F;
-			}
-
-			p.label
-			{
-			font-size: 20px;
-			}
-
-			.label::after
-			{
-			content: ":";
-			}
-
-			a, a:link
-			{
-			text-decoration: none;
-			color: #E74040;
-			}
-
-			a:visited
-			{
-			color: #8A4343;
-			}
-
-			a:hover
-			{
-			color: #FF7000;
-			}
-
-			a:active
-			{
-			color: #0F0F0F;
-			}
-
-			/* ------------------------------------------------------------------------------------------------------*/
-
-
-			/* --------------------------------------FOOTER PART-----------------------------------------------------*/
-			#footer
-			{
-			width: 100%;
-			height: 25%;
-			min-height: 200px;
-			border: 1px solid red;
-			background-color: #2F2E2E;
-			box-sizing: border-box;
-			padding: 5px 40px;
-			}
-
-			#botContent, #botContent ul
-			{
-			margin: 0;
-			padding: 0;
-			list-style: none;
-			}
-
-			#contact
-			{
-			width: 100%;
-			}
-
-			#icons
-			{
-			margin: 0 auto;
-			width: 100%;
-			padding: 0;
-			list-style: none;
-			}
-
-			#icons li
-			{
-			display: inline-block;
-			float: left;
-			margin: 10px 5px;
-			}
-
-			.icon
-			{
-			height: 50px;
-			}
-
-			#botContent li div
-			{
-			height: 30%;
-			width: 33%;
-			display: inline-block;
-			float: left;
-			margin: 10px auto;
-			}
-
-			#botContent a
-			{
-			display: block;
-			color: #FFFFFF;
-			text-decoration: none;
-			text-align: center;
-			margin: 0px auto;
-			}
-
-			#botContent #mail
-			{
-			color: #FFA5A5;
-			}
-
-			#botContent a:hover
-			{
-			color: #FFA5A5;
-			}
-
-			.center
-			{
-			margin: 0;
-			text-align: center;
-			color: white;
-			}
-
-			/* ------------------------------------------------------------------------------------------------------*/
-
-
-
-			/* -----------------------MENU BAR-----------------------------------*/
-
-			.menu
-			{
-			width: 100%;
-			height: auto;
-			border: 1px solid red;
-			border-top: 0px;
-			box-sizing: border-box;
-			}
-
-			#menuBar
-			{
-				width: 100%;
-				margin: 0;
-				padding: 0px;
-				height: 100%;
-				line-height: 30px;
-				background: #8B8B8B;
-				background: -webkit-linear-gradient(#595959, #353535);
-				background: -o-linear-gradient(#595959, #353535);
-				background: linear-gradient(#595959, #353535);
-				position:relative;
-				display: inline-block;
-			}
-
-
-			#menuBar li, #menuBar > li
-			{
-				margin: 0;
-				height: 90%;
-				padding: 0px 6px;
-				text-align: center;
-				float: left;
-				position: relative;
-				list-style: none;
-			}
-
-			#menuBar > li
-			{
-			width: 12%;
-			}
-
-			#menuBar li ul li
-			{
-			width: 100%;
-			}
-
-			#menuBar > li > a
-			{
-			margin: 2px;
-			}
-
-			#menuBar > .active, #menuBar > li:hover
-			{
-			border-top: 2px solid #FA0000;
-			}
-
-			#menuBar a
-			{
-				font-weight: bold;
-				font-family: arial;
-				font-style: normal;
-				font-size: 17px;
-				color: #E7E5E5;
-				text-decoration: none;
-				display: block;
-				padding: 6px 20px;
-				margin: 0;
-				margin-bottom: 6px;
-				border-radius: 10px;
-				-webkit-border-radius: 10px;
-				-moz-border-radius: 10px;
-				text-shadow: 2px 2px 3px black;
-			}
-
-			#menuBar li ul li a
-			{
-				margin: 0;
-			}
-
-			#menuBar .active a, #menuBar li:hover > a
-			{
-				background: #0399D4;
-				background: -webkit-linear-gradient(#3B3B3B, #202020);
-				background: -o-linear-gradient(#3B3B3B, #202020);
-				background: linear-gradient(#3B3B3B, #202020);
-				color: #A22B2B;
-				-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
-				-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
-				box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
-				text-shadow: 1px 1px 2px #000000;
-				border-radius: 500px;
-			}
-
-			#menuBar ul li:hover a, #menuBar li:hover li a
-			{
-				background: none;
-				border: none;
-				color: #A22B2B;
-				-box-shadow: none;
-				-webkit-box-shadow: none;
-				-moz-box-shadow: none;
-			}
-
-			#menuBar ul a:hover
-			{
-				background: #FE6060 !important;
-				color: #FFFFFF !important;
-				border-radius: 0;
-				-webkit-border-radius: 0;
-				-moz-border-radius: 0;
-				text-shadow: 2px 2px 3px #FFFFFF;
-			}
-
-
-			#menuBar li:hover > ul
-			{
-				display: block;
-				z-index: 2;
-			}
-
-			#menuBar ul
-			{
-				margin: 0;
-				padding: 0;
-				background: #DDDDDD;
-				background: -webkit-linear-gradient(#FFFFFF, #CFCFCF);
-				background: -o-linear-gradient(#FFFFFF, #CFCFCF);
-				background: linear-gradient(#FFFFFF, #CFCFCF);
-				display: none;
-				width: 100%;
-				position: absolute;
-				top: 47px;
-				left: 0;
-				border: solid 1px #B4B4B4;
-				border-radius: 10px;
-				-webkit-border-radius: 10px;
-				-moz-border-radius: 10px;
-				-webkit-box-shadow: 2px 2px 3px #222222;
-				-moz-box-shadow: 2px 2px 3px #222222;
-				box-shadow: 2px 2px 3px #222222;
-			}
-
-			#menuBar ul li
-			{
-				float: none;
-				margin: 0;
-				padding: 0;
-			}
-
-			#menuBar ul a {
-				padding:10px 0px 10px 15px;
-				color:#424242 !important;
-				font-size:12px;
-				font-style:normal;
-				font-family:arial;
-				font-weight: normal;
-				text-shadow: 2px 2px 3px #FFFFFF;
-			}
-
-			#menuBar ul li:first-child > a {
-				border-top-left-radius: 10px;
-				-webkit-border-top-left-radius: 10px;
-				-moz-border-radius-topleft: 10px;
-				border-top-right-radius: 10px;
-				-webkit-border-top-right-radius: 10px;
-				-moz-border-radius-topright: 10px;
-			}
-
-			#menuBar ul li:last-child > a {
-				border-bottom-left-radius: 10px;
-				-webkit-border-bottom-left-radius: 10px;
-				-moz-border-radius-bottomleft: 10px;
-				border-bottom-right-radius: 10px;
-				-webkit-border-bottom-right-radius: 10px;
-				-moz-border-radius-bottomright: 10px;
-			}
-
-			/* ----------------------------------------------------------------------*/
-		</style>
-	</head>
-	<body>
-		<div id="main">
-			<div id="header">
-				<img src="http://www.lovethisgif.com/uploaded_images/12067-In-Other-Words-Rest-Assured.-We-Keep-It-Ninja..gif" id="logo">
-				<div class="HeaderText">
-					<h1>CS110 Homework1</h1>
-				</div>
-				<div id="phones">
-					<span class = "phoneArea">
-						+374 93 14 11 04<br>
-						+374 98 23 42 74
-					</span>
-				</div>
-			</div>
-			<div class="menu">
-				<ul id = "menuBar">
-		 			<li>
-		 				<a href="#">Home</a>
-		 			</li>
-		 			<li>
-		 				<a href="#">Gallery</a>
-		  				<ul>
-		   					<li><a href="#">Gallery 1</a></li>
-		   					<li><a href="#">Gallery 2</a></li>
-		   					<li><a href="#">Gallery 3</a></li>
-		   					<li><a href="#">Gallery 4</a></li>
-		  				</ul>
-		 			</li>
-		 			<li class="active">
-		 				<a href="#">HTML</a>
-		 			</li>
-		 			<li>
-		 				<a href="#">CSS</a>
-		 			</li>
-		 			<li>
-		 				<a href="#">About</a>
-		 			</li>
-		 			<li>
-		 				<a href="#">Contact</a>
-		 			</li>
-				</ul>
-			</div>
-
-
-			<div id="content">
-				<div class="headerBlock">
-					<h2 class = "pageHeader">What is HTML?</h2>
-				</div>
-				<div class="left small divided">
-					<img src="http://www.mobiz.co.in/assets/img/html5.png" class="postImage">
-					<p class="caption">HTML logo</p>
-				</div>
-				<p class = "mainText">
-					HyperText Markup Language, commonly abbreviated as HTML, is the standard markup language used to create web pages. Along with CSS, and JavaScript, HTML is a cornerstone technology used to create web pages, as well as to create user interfaces for mobile and web applications. Web browsers can read HTML files and render them into visible or audible web pages. HTML describes the structure of a website semantically and, before the advent of Cascading Style Sheets (CSS), included cues for the presentation or appearance of the document (web page), making it a markup language, rather than a programming language.
-				</p>
-				<p class = "mainText">
-					HTML elements form the building blocks of HTML pages. HTML allows images and other objects to be embedded and it can be used to create interactive forms. It provides a means to create structured documents by denoting structural semantics for text such as headings, paragraphs, lists, links, quotes and other items. HTML elements are delineated by tags, written using angle brackets. Tags such as <code>&lt;img /&gt;</code> and <code>&lt;input /&gt;</code> introduce content into the page directly. Others such as <code>&lt;p&gt;...&lt;/p&gt;</code> surround and provide information about document text and may include other tags as sub-elements. Browsers do not display the HTML tags, but use them to interpret the content of the page
-				</p>
-				<p class = "mainText">
-					HTML can embed scripts written in languages such as JavaScript which affect the behavior of HTML web pages. HTML markup can also refer the browser to Cascading Style Sheets (CSS) to define the look and layout of text and other material. The World Wide Web Consortium (W3C), maintainer of both the HTML and the CSS standards, has encouraged the use of CSS over explicit presentational HTML since 1997.
-				</p>
-			</div>
-
-
-			<div id="footer">
-				<ul id = "botContent">
-					<li>
-						<div>
-							<a href = "#">COMPANY</a>
-							<br>
-							<br>
-							<ul>
-								<li>
-									<a href="#">About Us</a>
-								</li>
-								<li>
-									<a href="#">Our Services</a>
-								</li>
-								<li>
-									<a href="#">Contacts</a>
-								</li>
-								<li>
-									<a href="#">Blog</a>
-								</li>
-							</ul>
-						</div>
-					</li>
-					<li>
-						<div>
-							<a href = "#">CONTACT</a>
-							<br>
-							<br>
-							<ul>
-								<li>
-									<a href="mailto:robert1999.g@gmail.com" target="_top" id = "mail">robert1999.g@gmail.com</a>
-								</li>
-								<li>
-									<a href="#">+374(93) 14 11 04</a>
-								</li>
-								<br>
-								<li>
-									<ul id = "icons">
-										<li>
-											<a href = "#">
-												<img src="https://cdn3.iconfinder.com/data/icons/complete-set-icons/512/twitter2512x512.png" class = "icon"></img>
-											</a>
-										</li>
-										<li>
-											<a href = "#">
-												<img src="https://cdn3.iconfinder.com/data/icons/complete-set-icons/512/facebook512x512.png" class = "icon"></img>
-											</a>
-										</li>
-										<li>
-											<a href = "#">
-												<img src="https://cdn3.iconfinder.com/data/icons/complete-set-icons/512/youtube512x512.png" class = "icon"></img>
-											</a>
-										</li>
-										<li>
-											<a href = "#">
-												<img src="https://cdn3.iconfinder.com/data/icons/complete-set-icons/512/googleplus512x512.png" class = "icon"></img>
-											</a>
-										</li>
-										<li>
-											<a href = "#">
-												<img src="https://cdn3.iconfinder.com/data/icons/complete-set-icons/512/linkedin512x512.png" class = "icon"></img>
-											</a>
-										</li>
-									</ul>
-								</li>
-							</ul>
-						</div>
-					</li>
-					<li>
-						<div>
-							<a href = "#">ADRESS</a>
-							<br>
-							<p class = "center">38 Alaverdyan St.</p>
-							<p class = "center">Gyurmi</p>
-							<p class = "center">Shirak</p>
-							<p class = "center">Armenia</p>
-							<p class = "center">3112</p>
-						</div>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Wave Animation Demo</title>
+    <meta
+      name="description"
+      content="Hero wave animation prototype with accessibility, theming, and feature flag support."
+    />
+    <style>
+      :root {
+        color-scheme: light dark;
+        --color-bg: #040a16;
+        --color-surface: #0c1627;
+        --color-card: rgba(255, 255, 255, 0.03);
+        --color-text: #f7fbff;
+        --color-muted: rgba(247, 251, 255, 0.7);
+        --color-primary: #66c3ff;
+        --color-accent: #ff5d76;
+        --wave-front: rgba(255, 93, 118, 0.35);
+        --wave-back: rgba(102, 195, 255, 0.28);
+      }
+
+      @media (prefers-color-scheme: light) {
+        :root {
+          --color-bg: #f4f7fb;
+          --color-surface: #ffffff;
+          --color-card: rgba(14, 22, 39, 0.05);
+          --color-text: #0c1627;
+          --color-muted: rgba(12, 22, 39, 0.72);
+          --color-primary: #0066ff;
+          --color-accent: #ff4f6d;
+          --wave-front: rgba(255, 79, 109, 0.3);
+          --wave-back: rgba(0, 102, 255, 0.2);
+        }
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --color-bg: #020910;
+          --color-surface: #050f1b;
+          --color-card: rgba(255, 255, 255, 0.04);
+          --color-text: #f1f6ff;
+          --color-muted: rgba(241, 246, 255, 0.8);
+          --color-primary: #5ad2ff;
+          --color-accent: #ff8ab2;
+          --wave-front: rgba(255, 138, 178, 0.33);
+          --wave-back: rgba(90, 210, 255, 0.25);
+        }
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: var(--color-bg);
+        color: var(--color-text);
+        font-family: "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont,
+          sans-serif;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      body[data-theme="dark"] {
+        background: #01060d;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .page {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      .hero {
+        position: relative;
+        overflow: hidden;
+        background: radial-gradient(circle at top right, rgba(255, 255, 255, 0.08), transparent 55%),
+          var(--color-surface);
+        color: var(--color-text);
+        padding: clamp(3rem, 6vw, 6rem) clamp(1.5rem, 6vw, 5rem);
+        min-height: 70vh;
+        display: flex;
+        align-items: center;
+        isolation: isolate;
+      }
+
+      .hero__content {
+        position: relative;
+        z-index: 2;
+        max-width: 720px;
+      }
+
+      .hero__eyebrow {
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        font-size: 0.83rem;
+        color: var(--color-muted);
+        margin-bottom: 1rem;
+      }
+
+      .hero__title {
+        font-size: clamp(2.5rem, 5vw, 4.25rem);
+        line-height: 1.1;
+        margin: 0 0 1.25rem;
+      }
+
+      .hero__subtitle {
+        font-size: 1.1rem;
+        color: var(--color-muted);
+        max-width: 48ch;
+        margin-bottom: 2rem;
+      }
+
+      .hero__cta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+
+      .btn {
+        border: none;
+        border-radius: 999px;
+        padding: 0.85rem 1.75rem;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 200ms ease, box-shadow 200ms ease;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .btn:focus-visible {
+        outline: 3px solid var(--color-primary);
+        outline-offset: 3px;
+      }
+
+      .btn--primary {
+        background: linear-gradient(120deg, var(--color-primary), var(--color-accent));
+        color: var(--color-surface);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+      }
+
+      .btn--ghost {
+        background: transparent;
+        color: var(--color-text);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(4px);
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+
+      .hero__wave-root {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .hero--static-wave .hero__wave-root::after {
+        content: "";
+        position: absolute;
+        inset: auto 0 0;
+        height: 55%;
+        background: linear-gradient(180deg, transparent, var(--color-card));
+      }
+
+      main {
+        flex: 1;
+        background: var(--color-bg);
+        padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 8vw, 6rem);
+      }
+
+      .section {
+        background: var(--color-card);
+        border-radius: 24px;
+        padding: clamp(1.5rem, 4vw, 3rem);
+        margin-bottom: 2rem;
+        backdrop-filter: blur(8px);
+      }
+
+      .section h2 {
+        margin-top: 0;
+        font-size: 1.5rem;
+      }
+
+      .metrics {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1rem;
+      }
+
+      .metric-card {
+        border-radius: 18px;
+        padding: 1.25rem;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      footer {
+        padding: 2rem;
+        text-align: center;
+        color: var(--color-muted);
+      }
+
+      @media (max-width: 600px) {
+        .hero__cta {
+          flex-direction: column;
+          align-items: stretch;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero" id="hero">
+        <div class="hero__content">
+          <p class="hero__eyebrow">Product studio</p>
+          <h1 class="hero__title">A calm wave for a confident launch.</h1>
+          <p class="hero__subtitle">
+            The hero background now features a gentle, on-brand wave animation that keeps focus on
+            your messaging while adding a touch of polish. It adapts to theme, motion preferences,
+            and device performance constraints.
+          </p>
+          <div class="hero__cta">
+            <button class="btn btn--primary" type="button">Start free trial</button>
+            <button class="btn btn--ghost" type="button">See case studies</button>
+          </div>
+        </div>
+        <div class="hero__wave-root" id="hero-wave-root" aria-hidden="true"></div>
+      </header>
+      <main>
+        <section class="section">
+          <h2>Why waves?</h2>
+          <p>
+            Layered SVG waves provide an expressive yet lightweight way to add motion. They are
+            resolution-independent, GPU-accelerated, and easy to recolor using theme tokens, keeping
+            your bundle lean and fast.
+          </p>
+        </section>
+        <section class="section">
+          <h2>Performance guardrails</h2>
+          <div class="metrics">
+            <article class="metric-card">
+              <strong>≤ 5 KB</strong>
+              <p>Additional payload, no external animation libs.</p>
+            </article>
+            <article class="metric-card">
+              <strong>60 FPS</strong>
+              <p>Transforms only, avoiding layout thrash.</p>
+            </article>
+            <article class="metric-card">
+              <strong>1× analytics</strong>
+              <p>Emits a single <code>hero_wave_rendered</code> event per session.</p>
+            </article>
+            <article class="metric-card">
+              <strong>Feature flag</strong>
+              <p>Instantly disable without shipping new code.</p>
+            </article>
+          </div>
+        </section>
+      </main>
+      <footer>© 2025 Wave Systems. Built with accessibility-first motion.</footer>
+    </div>
+    <script>
+      (function () {
+        const FEATURE_FLAGS = window.__FEATURE_FLAGS__ || { heroWave: true };
+        const HERO_WAVE_EVENT_KEY = "hero_wave_rendered";
+        const svgNS = "http://www.w3.org/2000/svg";
+
+        function emitAnalyticsEvent(eventName, payload) {
+          const eventPayload = Object.assign({ feature: "hero_wave" }, payload);
+          try {
+            if (window.dataLayer && Array.isArray(window.dataLayer)) {
+              window.dataLayer.push({ event: eventName, ...eventPayload });
+              return;
+            }
+            if (window.analytics && typeof window.analytics.track === "function") {
+              window.analytics.track(eventName, eventPayload);
+              return;
+            }
+          } catch (analyticsError) {
+            console.warn("Analytics emit failed", analyticsError);
+          }
+          console.log(`[analytics] ${eventName}`, eventPayload);
+        }
+
+        function oncePerSession(key, fn) {
+          try {
+            if (window.sessionStorage.getItem(key)) {
+              return;
+            }
+            fn();
+            window.sessionStorage.setItem(key, "seen");
+          } catch (err) {
+            fn();
+          }
+        }
+
+        function injectWaveStyles() {
+          if (document.getElementById("hero-wave-style")) {
+            return;
+          }
+
+          const style = document.createElement("style");
+          style.id = "hero-wave-style";
+          style.textContent = `
+            @keyframes heroWaveDrift {
+              from { transform: translate3d(0, 0, 0); }
+              to { transform: translate3d(-30%, 0, 0); }
+            }
+
+            @keyframes heroWaveFloat {
+              0% { transform: translateY(0); }
+              50% { transform: translateY(calc(var(--wave-vertical-range, 18px) * -1)); }
+              100% { transform: translateY(0); }
+            }
+
+            .hero__wave-root {
+              overflow: hidden;
+            }
+
+            .hero__wave {
+              position: absolute;
+              width: 220%;
+              height: 160%;
+              left: -60%;
+              bottom: -30%;
+              opacity: var(--wave-opacity, 0.3);
+              animation: heroWaveDrift var(--wave-duration, 18s) linear infinite,
+                         heroWaveFloat var(--wave-float-duration, 8s) ease-in-out infinite;
+              will-change: transform;
+              transform: translate3d(0, 0, 0);
+            }
+
+            .hero__wave path {
+              fill: var(--wave-color, rgba(255, 255, 255, 0.3));
+            }
+
+            .hero__wave--back {
+              --wave-duration: 24s;
+              --wave-float-duration: 11s;
+              --wave-opacity: 0.25;
+              --wave-vertical-range: 14px;
+              filter: blur(1px);
+            }
+
+            .hero__wave--front {
+              --wave-duration: 16s;
+              --wave-float-duration: 7s;
+              --wave-opacity: 0.35;
+              --wave-vertical-range: 18px;
+            }
+
+            @media (max-width: 480px) {
+              .hero__wave {
+                height: 140%;
+                bottom: -20%;
+              }
+
+              .hero__wave--front {
+                --wave-duration: 20s;
+                --wave-vertical-range: 12px;
+              }
+
+              .hero__wave--back {
+                --wave-duration: 28s;
+                --wave-vertical-range: 8px;
+              }
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+              .hero__wave {
+                animation-duration: 40s, 0.01s;
+                animation-iteration-count: 1, 1;
+              }
+            }
+
+            .hero--reduced-motion .hero__wave {
+              animation-play-state: paused;
+            }
+          `;
+          document.head.appendChild(style);
+        }
+
+        function createWaveLayer(className, colorVar) {
+          const svg = document.createElementNS(svgNS, "svg");
+          svg.setAttribute("class", className);
+          svg.setAttribute("viewBox", "0 0 1200 200");
+          svg.setAttribute("preserveAspectRatio", "none");
+          svg.setAttribute("focusable", "false");
+          svg.setAttribute("role", "presentation");
+
+          const path = document.createElementNS(svgNS, "path");
+          path.setAttribute(
+            "d",
+            "M0,80 C150,120 350,20 600,80 C850,140 1050,40 1200,80 L1200,200 L0,200 Z"
+          );
+          path.setAttribute("style", `fill: ${colorVar}; opacity: 1;`);
+          svg.appendChild(path);
+          return svg;
+        }
+
+        function watchMotionPreference(heroEl) {
+          const query = window.matchMedia("(prefers-reduced-motion: reduce)");
+          const apply = (matches) => {
+            heroEl.classList.toggle("hero--reduced-motion", matches);
+          };
+          apply(query.matches);
+          if (typeof query.addEventListener === "function") {
+            query.addEventListener("change", (event) => apply(event.matches));
+          } else if (typeof query.addListener === "function") {
+            query.addListener((event) => apply(event.matches));
+          }
+        }
+
+        function initHeroWave() {
+          const hero = document.getElementById("hero");
+          const root = document.getElementById("hero-wave-root");
+
+          if (!hero || !root) {
+            return;
+          }
+
+          if (FEATURE_FLAGS.heroWave === false) {
+            hero.classList.add("hero--static-wave");
+            return;
+          }
+
+          const supportsTransforms = window.CSS && CSS.supports && CSS.supports("transform", "translateX(1px)");
+          if (!supportsTransforms) {
+            hero.classList.add("hero--static-wave");
+            root.remove();
+            return;
+          }
+
+          injectWaveStyles();
+          watchMotionPreference(hero);
+
+          root.textContent = "";
+          const layers = [
+            { className: "hero__wave hero__wave--back", color: "var(--wave-back)" },
+            { className: "hero__wave hero__wave--front", color: "var(--wave-front)" },
+          ];
+          layers.forEach((layer) => {
+            const svg = createWaveLayer(layer.className, layer.color);
+            root.appendChild(svg);
+          });
+
+          oncePerSession(HERO_WAVE_EVENT_KEY, () => {
+            emitAnalyticsEvent("hero_wave_rendered");
+          });
+        }
+
+        try {
+          initHeroWave();
+        } catch (error) {
+          console.error("Hero wave failed", error);
+          emitAnalyticsEvent("hero_wave_error", { message: error.message });
+        }
+      })();
+    </script>
+  </body>
 </html>
