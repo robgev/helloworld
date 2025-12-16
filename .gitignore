@@ -1,0 +1,11 @@
+node_modules
+.dist
+build
+dist
+.vite
+coverage
+playwright-report
+test-results
+.vscode
+.idea
+*.log
