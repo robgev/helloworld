@@ -1,0 +1,10 @@
+node_modules
+.dist
+.DS_Store
+.vscode
+.idea
+dist/
+playwright-report/
+test-results/
+tsconfig.tsbuildinfo
+*.log
